@@ -61,3 +61,7 @@ public void ConfigureServices(IServiceCollection services)
    // ... remainder of the config ...
 }
 ```
+
+## Migrations
+
+Nothing special outside the fact we did not start with `enable-migrations` but directly created a migration with `add-migration`. After checking of the script just performed the usual `update-database` command.
