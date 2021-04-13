@@ -65,3 +65,35 @@ public void ConfigureServices(IServiceCollection services)
 ## Migrations
 
 Nothing special outside the fact we did not start with `enable-migrations` but directly created a migration with `add-migration`. After checking of the script just performed the usual `update-database` command.
+
+## BookList Razor page
+
+So far we have defined a Book Model and used EF so that it creates the relevant DB and table in SQL Server.
+
+> /BookList/Index.cshtml.cs
+
+```csharp
+   public class IndexModel : PageModel
+   {
+      private AppDbContext _db;
+
+      public IndexModel(AppDbContext db)
+      {
+         _db = db;
+      }
+
+      public IEnumerable<Book> Books { get; set; }
+      public async Task OnGet()
+      {
+         Books = await _db.Books.ToListAsync();
+      }
+   }
+```
+Just like in MVC we define a private property for the needs of the upcoming methods.
+
+In the constructor, we take advantage of dependency injection to inject the relevant DbContext as defined in the `Startup.cs` earlier.
+
+We populate a local property `Books` from the methods.
+Note that the default return type for `OnGet()` was `void`, but because we are using asynchronous methods to retrieve the data, we replaced it with `async Task`
+
+The view uses HTML along with Razor syntax, HTML helpers and Tag Helpers. See source of `Pages\BookList\Index.cshtml`.
