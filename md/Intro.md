@@ -5,7 +5,7 @@ This will contain quick notes only.
 
 ## Razor pages
 
-They are in the Views folder. According to the course you have `cshtml` and nested `cshtml.cs` files that would be holding the page model and therefore extending `PageModel`. It does not seem to be the case anymore. I don't have these files and did not work with Razor that way on the ASP.Net MVC projects I've done so far.
+They are in the Views folder if MVC is enabled and Pages folder otherwise.
 
 ## Project specific files
 
@@ -22,7 +22,7 @@ There are 2 ways to create ASP.Net Core :
 - One which has the MVC approach
 - One that replaces controllers and Views with a Pages folder.
 
-Each view will be made of:
+In the latter context, each view will be made of:
   - A cshtml file
   - A cshtml.cs file extending `PageModel` which replaces Controllers.  
 
@@ -54,3 +54,23 @@ Some equivalents:
 ## Main method
 
 ASP.Net Core applications has a `Main()` method in the `Program` class just like another C# program.
+
+It amongst other initiate a host configuration ending up in the Startup class.
+This class has several methods to configure the application.
+
+```csharp
+void CongigureServices(IServiceCollection services)
+```
+It allows to define services available to the application. The default template has Razor pages configured by default. Services that could be added for instance are EF Core, Identity Service, MVC and more.
+
+
+```csharp
+void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+```
+
+Configure the HTTP request pipeline. The `app` param can provide methods to configure middlewares to be used.
+
+## Middleware
+
+They are software components that can be combined to customize the way we ahndle request and response.
+The classic scenario is each middleware passes its output to the next until we reach the end of the pipeline. That said, it may happen that at some point a middleware determine the response should be returned as is without going further in the pipeline.
