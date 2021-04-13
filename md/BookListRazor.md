@@ -23,3 +23,14 @@ Install NuGet Packages:
 - `Microsoft.EntityFramworkCore.Tools`
 
 > See [installed dependencies](PackageDependencies.md).
+
+Edit `appsettings.json` to add the connection strings.
+
+```js
+{
+   "ConnectionStrings": {
+       "DefaultConnection": "Server=(LocalDB)\\MSSQLLocalDB;Database=BookListRazor;Trusted_Connection=True;MultipleActiveResultSets=True"
+     },
+   /* ... remainder of the file */
+}
+```
