@@ -1,4 +1,4 @@
-Book list Razor
+﻿Book list Razor
 ===============
 
 ## Runtime compilation
@@ -117,3 +117,30 @@ public async Task<IActionResult> OnPost()
 ```
 
 After we add the annotation to the Book property, It is assumed `OnPost()` getting this property.
+
+## Validation
+
+Just like ASP.Net MVC, server side validation occurs when you call `ModelState.IsValid`.
+
+Then the display of error messages on the actual page must be added for every single input.
+
+This goes in 2 major steps:
+- Enabling validation
+- Adding validation for each input
+
+Respectively:
+```html
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+```
+Possible values for the `asp-validation-summary` tag helper are:
+
+| Value | Description |
+|---|---|
+| All | Displays both the validation for the model and properties. |
+| ModelOnly | Displays a validation text next for the model only. |
+| None | No message is displayed. |
+
+```html
+<span asp-validation-for="Book.Title" class="text-danger"></span>
+```
+Simple `asp-validation-for` tag helper is used along with the proper value to display the messages.
