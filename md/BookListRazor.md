@@ -154,3 +154,23 @@ At the bottom on the page we add
     <partial name="_ValidationScriptsPartial" />
 }
 ```
+
+## Executing a handler
+
+The creation and edition are straightforward operations which redirect to a specific page. Deletion will not redirect to another page yet need some code to be run.
+
+```html
+<a asp-page="EditBook" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+```
+
+`asp-route-<ParamName>` is usable in a similar way of HTML data attributes. You can replace the last part with an identifier.
+
+`asp-page` tells what is the target page after a POST request.
+
+```html
+<button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete @item.Title?')" class="btn btn-danger btn-sm">Delete</button>
+```
+
+`asp-page-handler` allows us to determine which handler would be called. Along with the previous tag helper, this is kind of equivalent to ASP.Net MVC Controller/Action routing (see the [official doc @MSDN](https://docs.microsoft.com/fr-fr/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-5.0#asp-page-handler)). 
+
+The above `asp-page-handler="Delete"` means there is a `On<Verb>Delete` handler in Index.cshtml.cs where `<Verb>` can be any valid HTTP method such as Get or Post. Because we use a `<button>`, the verb will be Post. We also provide an `id` via `asp-route-id` tag helper. Hence the full target handler name will become `OnPostDelete(int id)`.
