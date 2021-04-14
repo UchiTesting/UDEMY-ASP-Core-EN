@@ -144,3 +144,13 @@ Possible values for the `asp-validation-summary` tag helper are:
 <span asp-validation-for="Book.Title" class="text-danger"></span>
 ```
 Simple `asp-validation-for` tag helper is used along with the proper value to display the messages.
+
+To enable client-side validation, we simply need to add a reference to the available validation partial.
+
+At the bottom on the page we add
+
+```html
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+```
