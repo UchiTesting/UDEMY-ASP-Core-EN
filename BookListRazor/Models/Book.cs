@@ -14,5 +14,7 @@ namespace BookListRazor.Models
       [Required]
       public string Title { get; set; }
       public string Author { get; set; }
+      [MaxLength(17)]
+      public string ISBN { get; set; }
    }
 }
