@@ -97,3 +97,23 @@ We populate a local property `Books` from the methods.
 Note that the default return type for `OnGet()` was `void`, but because we are using asynchronous methods to retrieve the data, we replaced it with `async Task`
 
 The view uses HTML along with Razor syntax, HTML helpers and Tag Helpers. See source of `Pages\BookList\Index.cshtml`.
+
+## Binding properties
+
+In the context of coding the functionality of the CreateBook form, we need to pass an instance of book. In the general context, it would simply be passed to the `OnPost()` method.
+
+```csharp
+public async Task<IActionResult> OnPost(Book bookObj)
+```
+There is a `[BindProperty]` annotation that allows to bind it automatically.
+
+```csharp
+[BindProperty]
+public Book Book { get; set; }
+
+// ... Any code here ...
+
+public async Task<IActionResult> OnPost()
+```
+
+After we add the annotation to the Book property, It is assumed `OnPost()` getting this property.
