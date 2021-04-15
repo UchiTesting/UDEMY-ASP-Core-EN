@@ -1,17 +1,17 @@
-﻿var datatable;
+﻿var dataTable;
 
 $(document).ready(function () {
     loadDatatable();
 });
 
 function loadDatatable() {
-    datatable = $("#DT_load").DataTable({
+    dataTable = $("#DT_load").DataTable({
         "ajax": {
             "url": "/apimvc/Book",
             "type": "GET",
-            "daraSrc":"",
+            "daraSrc": "",
             "dataType": "json"
-        }, 
+        },
         "columns": [
             {
                 "data": "title",
@@ -30,7 +30,8 @@ function loadDatatable() {
                 "render": function (data) {
                     return `<div class="text-center">
                                 <a class="btn btn-sm btn-danger text-white"
-                                   style="cursor:pointer;">
+                                   style="cursor:pointer;"
+                                   onclick="Delete('/apimvc/Book?id=${data}')">
                                    Delete</a>
 
                                 <a href="/BookList/EditBook?id=${data}" 
@@ -39,12 +40,37 @@ function loadDatatable() {
                                    Edit</a>
                             </div>`
                 },
-                "width":"20%"
+                "width": "20%"
             }
         ],
         "language": {
-            "emptyTable":"No data found"
+            "emptyTable": "No data found"
         },
         "width": "100%"
+    });
+}
+
+function Delete(apiUrl) {
+    swal({
+        title: "Are you sure?",
+        text: "This operation cannot be reverted.",
+        icon: "warning",
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: "DELETE",
+                url: apiUrl,
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        dataTable.ajax.reload();
+                    }
+                    else {
+                        toastr.error(data.message);
+                    }
+                }
+            });
+        }
     });
 }

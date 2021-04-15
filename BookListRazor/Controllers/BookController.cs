@@ -26,12 +26,13 @@ namespace BookListRazor.Controllers
          return Json(new { data = _db.Books.SingleOrDefault(b => b.Id == id) });
       }
 
-      [HttpDelete("{id}")]
+      //[HttpDelete("{id}")]
+      [HttpDelete]
       public IActionResult Delete(int id)
       {
          var bookToDelete = _db.Books.Find(id);
 
-         if (bookToDelete is null) return Json(new { Success = false, Message = "Error while deleting." });
+         if (bookToDelete is null) return Json(new { success = false, message = "Error while deleting." });
 
          _db.Books.Remove(bookToDelete);
          _db.SaveChanges();
