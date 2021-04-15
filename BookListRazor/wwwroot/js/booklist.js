@@ -9,7 +9,6 @@ function loadDatatable() {
         "ajax": {
             "url": "/apimvc/Book",
             "type": "GET",
-            "daraSrc": "",
             "dataType": "json"
         },
         "columns": [
