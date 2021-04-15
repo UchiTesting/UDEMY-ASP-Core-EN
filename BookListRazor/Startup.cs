@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BookListRazor
@@ -30,6 +31,11 @@ namespace BookListRazor
          services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
          services.AddRazorPages().AddRazorRuntimeCompilation();
+         services.AddControllers();
+
+         services.AddControllers()
+            .AddJsonOptions(option => option.JsonSerializerOptions.WriteIndented = true)
+            .AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +62,7 @@ namespace BookListRazor
          app.UseEndpoints(endpoints =>
          {
             endpoints.MapRazorPages();
+            endpoints.MapControllers();
          });
       }
    }
