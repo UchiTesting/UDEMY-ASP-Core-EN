@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookListRazor", "BookListRazor\BookListRazor.csproj", "{FF84A40F-3DD4-44FC-B94E-178961AC9F28}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{D951F9BE-70D9-49ED-87FC-45A94D9E2B38}"
+	ProjectSection(SolutionItems) = preProject
+		md\Api.md = md\Api.md
+		md\BookListRazor.md = md\BookListRazor.md
+		md\Datatables.md = md\Datatables.md
+		md\Intro.md = md\Intro.md
+		md\Notes.md = md\Notes.md
+		md\PackageDependencies.md = md\PackageDependencies.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
