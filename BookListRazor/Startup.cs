@@ -11,7 +11,9 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 
 namespace BookListRazor
@@ -31,10 +33,17 @@ namespace BookListRazor
          services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
          services.AddRazorPages().AddRazorRuntimeCompilation();
-         services.AddControllers();
 
-         services.AddControllers()
+         services.AddControllersWithViews() // MVC Controller
+            .AddJsonOptions(option => option.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All))
             .AddJsonOptions(option => option.JsonSerializerOptions.WriteIndented = true)
+            .AddJsonOptions(option => option.JsonSerializerOptions.IgnoreNullValues = true)
+            .AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
+
+         services.AddControllers() // Web API Controller
+            .AddJsonOptions(option => option.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All))
+            .AddJsonOptions(option => option.JsonSerializerOptions.WriteIndented = true)
+            .AddJsonOptions(option => option.JsonSerializerOptions.IgnoreNullValues = true)
             .AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
       }
 
