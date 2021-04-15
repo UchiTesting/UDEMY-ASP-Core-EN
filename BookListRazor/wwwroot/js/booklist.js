@@ -54,6 +54,7 @@ function Delete(apiUrl) {
         title: "Are you sure?",
         text: "This operation cannot be reverted.",
         icon: "warning",
+        buttons: true,
         dangerMode: true
     }).then((willDelete) => {
         if (willDelete) {
