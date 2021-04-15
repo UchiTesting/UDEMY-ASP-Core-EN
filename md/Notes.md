@@ -1,8 +1,8 @@
 Notes
 =====
 
-[Introduction](Intro.md)
-[Book list Razor](BookListRazor.md)
-[]()
+- [Introduction](Intro.md)
+- [Book list Razor](BookListRazor.md)
+- [API](Api.md)
 []()
 []()
