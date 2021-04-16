@@ -118,6 +118,8 @@ public async Task<IActionResult> OnPost()
 
 After we add the annotation to the Book property, It is assumed `OnPost()` getting this property.
 
+> It might seem obvious, but it is important to use this annotation if you don't pass the property. Otherwise it may lead to Null object on submit.
+
 ## Validation
 
 Just like ASP.Net MVC, server side validation occurs when you call `ModelState.IsValid`.

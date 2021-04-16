@@ -70,5 +70,5 @@ As usual we need to add the connection string in `appsettings.json`
 
 And instruct to make use of it in `Startup.ConfigureServices()`.
 ```
-
+services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 ```
