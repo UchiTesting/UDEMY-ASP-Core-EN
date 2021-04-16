@@ -76,6 +76,28 @@ namespace BookListMVC.Controllers
 
          return Json(new { success = true, message = "Deleted book successfully." });
       }
+
+      [HttpPost]
+      [ValidateAntiForgeryToken]
+      public IActionResult Upsert()
+      {
+         if (ModelState.IsValid)
+         {
+            if (Book.Id == 0)
+            {
+               _db.Books.Add(Book);
+            }
+            else
+            {
+               _db.Books.Update(Book);
+            }
+
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+         }
+
+         return View(Book);
+      }
       #endregion
    }
 }

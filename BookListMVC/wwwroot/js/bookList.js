@@ -30,10 +30,10 @@ function loadDatatable() {
                     return `<div class="text-center">
                                 <a class="btn btn-sm btn-danger text-white"
                                    style="cursor:pointer;"
-                                   onclick="Delete('/apimvc/Book?id=${data}')">
+                                   onclick="Delete('/Books/Delete?id=${data}')">
                                    Delete</a>
 
-                                <a href="/BookList/EditBook?id=${data}" 
+                                <a href="/Books/Upsert?id=${data}" 
                                    class="btn btn-sm btn-success text-white"
                                    style="cursor:pointer;">
                                    Edit</a>
