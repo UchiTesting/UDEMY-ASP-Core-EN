@@ -8,12 +8,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{D951F9BE-70D9-49ED-87FC-45A94D9E2B38}"
 	ProjectSection(SolutionItems) = preProject
 		md\Api.md = md\Api.md
+		md\BookListMvc.md = md\BookListMvc.md
 		md\BookListRazor.md = md\BookListRazor.md
 		md\ExtraJs.md = md\ExtraJs.md
 		md\Intro.md = md\Intro.md
 		md\Notes.md = md\Notes.md
 		md\PackageDependencies.md = md\PackageDependencies.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookListMVC", "BookListMVC\BookListMVC.csproj", "{091F7DC1-F3F1-42A2-87F3-83F3D1873642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +28,10 @@ Global
 		{FF84A40F-3DD4-44FC-B94E-178961AC9F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF84A40F-3DD4-44FC-B94E-178961AC9F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF84A40F-3DD4-44FC-B94E-178961AC9F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091F7DC1-F3F1-42A2-87F3-83F3D1873642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091F7DC1-F3F1-42A2-87F3-83F3D1873642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091F7DC1-F3F1-42A2-87F3-83F3D1873642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091F7DC1-F3F1-42A2-87F3-83F3D1873642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
