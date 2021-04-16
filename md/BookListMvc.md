@@ -57,3 +57,16 @@ public static void RegisterRoutes(RouteCollection routes)
 	);
 }
 ```
+## DB Setup
+
+As usual we need to add the connection string in `appsettings.json`
+```javascript
+"ConnectionStrings": {
+    "DefaultConnection": "Server=(LocalDB)\\MSSQLLocalDB;Database=BookListRazor;Trusted_Connection=True;MultipleActiveResultSets=True"
+  },
+```
+
+And instruct to make use of it in `Startup.ConfigureServices()`.
+```
+
+```
