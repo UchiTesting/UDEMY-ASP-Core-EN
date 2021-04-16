@@ -24,6 +24,22 @@ namespace BookListMVC.Controllers
          return View();
       }
 
+      [BindProperty]
+      public Book Book { get; set; }
+
+      public IActionResult Upsert(int? id)
+      {
+         Book = new Book();
+
+         if (id is null) return View(Book);
+
+         Book = _db.Books.SingleOrDefault(b => b.Id == id);
+
+         if (Book is null) return NotFound();
+
+         return View(Book);
+      }
+
       #region API calls
       [HttpGet]
       public async Task<IActionResult> GetAll()
